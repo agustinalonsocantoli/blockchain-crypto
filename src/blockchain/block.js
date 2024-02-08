@@ -1,4 +1,4 @@
-import { add } from 'date-fns';
+import { add, format } from 'date-fns';
 import { SHA256 } from 'crypto-js';
 
 class Block {
@@ -11,7 +11,7 @@ class Block {
 
   static get genesis() {
     const timestamp = (new Date(2024, 0, 1)).getTime();
-    const startData = new Date();
+    const startData = format(new Date(), 'EEEE-dd-MMMM-uuuu-HH:mm');
     const hash = this.hash(timestamp, undefined, startData);
 
     return new this(timestamp, undefined, hash, startData);
@@ -23,13 +23,14 @@ class Block {
       months: 0,
       weeks: 0,
       days: 2,
-      hours: 2,
-      minutes: 30,
+      hours: 12,
+      minutes: 0,
       seconds: 0,
     };
-    const timestamp = Date.now();
     const { hash: previusHash, data: previusData } = previusBlock;
-    const data = add(new Date(previusData), addDateTime);
+
+    const timestamp = Date.now();
+    const data = format(add(new Date(previusData), addDateTime), 'EEEE-dd-MMMM-uuuu-HH:mm');
     const hash = Block.hash(timestamp, previusHash, data);
 
     return new this(timestamp, previusHash, hash, data);

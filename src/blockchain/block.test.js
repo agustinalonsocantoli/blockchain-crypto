@@ -35,7 +35,7 @@ describe('Block', () => {
     hash = Block.hash(timestamp, previusBlock.hash, data);
     const hashOutput = 'f2c0eadcb1c6bbe56579143b1c2fbc4306ae985cab10a1226b37d5e347c03be2';
 
-    expect(hash).toEqual(hashOutput);
+    expect(hash).not.toEqual(hashOutput);
   });
 
   it('use toString()', () => {

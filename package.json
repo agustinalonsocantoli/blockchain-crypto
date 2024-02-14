@@ -16,6 +16,8 @@
   },
   "scripts": {
     "start": "babel-node ./src/services/index.js",
+    "start:2": "HTTP_PORT=3001 P2P_PORT=9001 PEERS=ws://localhost:9000 babel-node ./src/services/index.js",
+    "start:3": "HTTP_PORT=3002 P2P_PORT=9002 PEERS=ws://localhost:9000,ws://localhost:9001 babel-node ./src/services/index.js",
     "nodemon": "nodemon --exec yarn start",
     "lint": "eslint index.js src",
     "test": "jest",

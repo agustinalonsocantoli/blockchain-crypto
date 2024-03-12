@@ -14,7 +14,7 @@ describe('Block', () => {
     data = new Date(2024, 0, 1);
   });
 
-  it('create an instance with parameters', () => {
+  it('create an instance', () => {
     const block = new Block(timestamp, previusBlock.hash, hash, data);
 
     expect(block.timestamp).toEqual(timestamp);
